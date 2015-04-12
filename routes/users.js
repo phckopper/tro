@@ -16,13 +16,21 @@ var component = new Schema({
 
 var Component = mongoose.model('Component', component);
 
-router.get('/typeahead', function(req, res) {
-  Component.find({}, 'name', function(err, doc) {
+router.get('/user/:id', function(req, res, next) {
+  var id = req.params.id;
+  console.log(id);
+  Component.find({'contributors_ids': id}, function(err, docs) {
     if(err) {
-      res.status(500).write('bug');
+      res.status(500).send("Erro do servidor. Foi mal :/");
     }
     else {
-      res.json(doc);
+      if(docs) {
+        console.log(docs);
+        res.render('user', { docs: docs, id: id });
+      }
+      else {
+        res.status(404).render('404', { url: req.url});
+      }
     }
   });
 });

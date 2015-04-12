@@ -51,7 +51,7 @@
           <li>
             <div class="collapsible-header"><span class="green-text">Autores</span></div>
             <% for(var i = 0; i < contributors_names.length; i++) { %>
-              <div class="collapsible-body"><p><%= contributors_names[i] %></p></div>
+              <div class="collapsible-body"><p><a href="/api/user/<%= contributors_ids[i] %>" class="white-text"><%= contributors_names[i] %></a></p></div>
             <% } %>
           </li>
         </ul>
