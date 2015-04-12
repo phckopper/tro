@@ -80,7 +80,6 @@ router.post('/edit', function(req, res) {
   delete data.name;
   delete data.type;
   delete data['img[]'];
-  delete data['g-recaptcha-response'];
   console.log(name);
   Component.findOne({'name': name}, function(err, doc) {
     if(!err) {
@@ -120,7 +119,6 @@ router.post('/create', function(req, res) {
     delete data.name;
     delete data.type;
     delete data['img[]'];
-    delete data['g-recaptcha-response'];
     var c = new Component({
       name: name,
       type: type,
