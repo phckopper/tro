@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>404</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/typeahead.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="green">
+    <nav>
+      <div class="nav-wrapper green">
+        <form id="search-form">
+          <div class="input-field">
+            <input id="search" class="typeahead" type="text" placeholder="Digite aqui o código de um componente" required>
+            <label for="search"><i class="mdi-action-search"></i></label>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="center-align">
+        <h1>Página não encontrada <%= url %></h1>
+        <a class="btn" href="/create">Deseja criar um componente?</a>
+        <h5>Ou você queria encontrar a página de página não encontrada?</h5>
+      </div>
+    </div>
+  </body>
+</html>

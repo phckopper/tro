@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Editar - <%= name %></title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/create.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script src="/javascripts/paper-core.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+  <body class="green lighten-4">
+    <nav>
+      <div class="nav-wrapper green">
+        <form id="search-form">
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="mdi-action-search"></i></label>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+      <div class="center-align">
+        <form accept-charset="utf-8" action="/api/edit" method="POST" class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="name" name="name" type="text" value="<%= name %>">
+              <label for="name">Nome</label>
+            </div>
+          </div>
+          <!-- <div id="canvas-code-holder">
+            <canvas id="CI" width="300" height="600"></canvas>
+            <p id="pins-val"></p>
+            <input name="pins" type="range" step="2" min="2" max="40" id="pins">
+          </div> -->
+          <div id="custom-fields">
+          <% for(var key in data) { %>
+            <% if(key.indexOf('description-') === -1) { %>
+              <div class="row input-field" id="txt-<%= key %>">
+                <div class="s3 col">
+                  <input type="text" id="main-<%= key %>" value="<%= data[key] %>" name="<%= key %>">
+                  <label for="main-<%= key %>"><%= key %></label>
+                </div>
+                <div class="s6 col">
+                  <input type="text" id="child-<%= key %>" value="<%= data['description-' + key] %>" name="description-<%= key %>">
+                </div>
+                <div class="s3 col">
+                  <a class="btn" onclick="removeItem('txt-<%= key %>')"><i class="mdi-action-highlight-remove"></i></a>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+          </div>
+          <br>
+          <h5>Imagens</h5>
+          <div id="images">
+            <% for(var i = 0; i < imgs.length; i++) { %>
+              <div class="row" id="img-<%= i %>">
+                <a class="btn" onclick="removeItem('img-<%= i %>')"><i class="mdi-action-highlight-remove"></i></a><img src="<%= imgs[i] %>">
+                <input type="hidden" name="img[]" value="<%= imgs[i] %>">
+              </div>
+            <% } %>
+          </div>
+          <br>
+          <a class="btn" id="add-field"><i class="mdi-content-add"></i> Adicionar campo</a>
+          <a class="btn" id="add-img"><i class="mdi-content-add"></i> Adicionar imagem</a>
+          <a class="btn" id="submit">Enviar</a>
+          <br>
+          <div class="g-recaptcha" style="margin-top: 2em;" data-sitekey="6Le6LAUTAAAAAKkncDWKFOUM22DlY-X3owDQ1OHu"></div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

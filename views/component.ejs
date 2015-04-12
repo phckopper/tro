@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nome blabla - <%= name %></title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="green">
+    <nav>
+      <div class="nav-wrapper green">
+        <form id="search-form">
+          <div class="input-field">
+            <input id="search" type="search" placeholder="Digite aqui o código de um componente" required>
+            <label for="search"><i class="mdi-action-search"></i></label>
+            <i class="mdi-navigation-close"></i>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <div class="container white-text">
+      <div>
+        <!-- <h1><-%-= title -%-></h1> -->
+        <h1 class="center-align"><%= name %></h1>
+        <ul class="collection">
+        <% for(var key in data) { %>
+          <% if(key.indexOf('description-') === -1) { %>
+            <a href="#!" class="collection-item tooltipped" data-position="left" data-delay="25" data-tooltip="<%= data['description-' + key] %>"><%= key %><span class="badge"><%= data[key] %></span></a>
+          <% } %>
+        <% } %>
+        </ul>
+        <br>
+        <hr>
+        <h3>Imagens</h3>
+        <br>
+        <% for(var i = 0; i < imgs.length; i++) { %>
+          <img src="<%= imgs[i] %>" class="responsive-img">
+          <br>
+        <% } %>
+      </div>
+      <div class="row">
+        <a href="/api/edit/<%= name %>" class="btn">Editar</a>
+      </div>
+      <div class="row">
+        <ul class="collapsible col s4" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><span class="green-text">Autores</span></div>
+            <% for(var i = 0; i < contributors_names.length; i++) { %>
+              <div class="collapsible-body"><p><%= contributors_names[i] %></p></div>
+            <% } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

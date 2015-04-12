@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/create.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script src="/javascripts/paper-core.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+  <body class="green lighten-4">
+    <nav>
+      <div class="nav-wrapper green">
+        <form id="search-form">
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="mdi-action-search"></i></label>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+      <div class="center-align">
+        <form accept-charset="utf-8" action="/api/create" method="POST">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Nome do componente" id="name" name="name" type="text" class="validate">
+              <label for="name">Nome</label>
+            </div>
+            <div class="input-field col s6">
+              <select name="type" class="browser-default">
+                <option value="" disabled selected>Tipo do componente</option>
+                <option value="ci">CI</option>
+                <option value="transistor">Transístor</option>
+                <option value="micro">Microcontrolador</option>
+                <option value="diode">Diodo</option>
+              </select>
+            </div>
+          </div>
+          <div id="custom-fields"></div>
+          <br>
+          <h5>Imagens</h5>
+          <div id="images"></div>
+          <br>
+          <a class="btn" id="add-field"><i class="mdi-content-add"></i> Adicionar campo</a>
+          <a class="btn" id="add-img"><i class="mdi-content-add"></i> Adicionar imagem</a>
+          <a class="btn" id="submit">Enviar</a>
+          <br>
+          <div class="g-recaptcha" style="margin-top: 2em;" data-sitekey="6Le6LAUTAAAAAKkncDWKFOUM22DlY-X3owDQ1OHu"></div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>
